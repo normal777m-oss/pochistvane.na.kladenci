@@ -7,7 +7,7 @@
   <meta name="description" content="Почистване и удълбочаване на кладенци в Перник и областта. Безплатен оглед. Копаене на нови кладенци и възстановяване на водния дебит. Тел: 0888 12 01 73">
   <!-- Каноничен URL (заменете с реалния) -->
   <link rel="canonical" href="https://example.com/">
-  <!-- Preload за hero изображението (LCP) с висок приоритет – само един файл, за да избегнем 404 -->
+  <!-- Preload за hero изображението (LCP) – само един файл, компресиран под 150 KB -->
   <link rel="preload" href="kladenets.webp" as="image" fetchpriority="high">
   <title>Почистване и удълбочаване на кладенци в Перник | Безплатен оглед</title>
   <!-- Preconnect за външни ресурси -->
@@ -54,7 +54,7 @@
       display:flex;align-items:center;justify-content:center;gap:10px;
     }
     .sticky-phone i{background:#d4a52c;color:#0f3b4c;padding:10px;border-radius:50%;}
-    /* Hero секция – само с kladenets.webp (без мобилна версия) */
+    /* Hero секция – с едно изображение (компресирано) */
     .hero{
       position:relative;min-height:80vh;display:flex;align-items:center;
       background-image:url('kladenets.webp');
@@ -274,7 +274,7 @@
   </nav>
 
   <main>
-    <!-- Hero секция (LCP елемент) с един файл -->
+    <!-- Hero секция (LCP елемент) – само едно изображение, компресирано -->
     <section class="hero">
       <div class="container hero-content">
         <h1>Почистване и удълбочаване на кладенци</h1>
