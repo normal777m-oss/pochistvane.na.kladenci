@@ -5,26 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Meta description -->
   <meta name="description" content="Почистване и удълбочаване на кладенци в Перник и областта. Безплатен оглед. Копаене на нови кладенци и възстановяване на водния дебит. Тел: 0888 12 01 73">
-  <!-- Каноничен URL (заменете с реалния) -->
+  <!-- Каноничен URL -->
   <link rel="canonical" href="https://example.com/">
-  <!-- Preload за hero изображението (LCP) – само един файл, компресиран под 150 KB -->
+  <!-- Preload за hero изображението (LCP) -->
   <link rel="preload" href="kladenets.webp" as="image" fetchpriority="high">
   <title>Почистване и удълбочаване на кладенци в Перник | Безплатен оглед</title>
-  <!-- Preconnect за външни ресурси -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preconnect за външни ресурси (само FontAwesome) -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-  <!-- Preload за FontAwesome шрифтовете (за по-бързо зареждане и намаляване на мигането) -->
+  <!-- Preload за FontAwesome шрифтовете -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Всички стилове са inline за максимална производителност -->
   <style>
-    /* ----- КРИТИЧНИ И НЕКРИТИЧНИ СТИЛОВЕ (ВСИЧКО В ЕДИН ФАЙЛ) ----- */
+    /* ----- ВСИЧКИ СТИЛОВЕ СА INLINE (без външни шрифтове, само system-ui) ----- */
     *{margin:0;padding:0;box-sizing:border-box;}
     body{
-      font-family:'Inter',sans-serif;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; /* системен шрифт – нулев CLS */
       background:#f5f9fc;
       color:#1e2e3a;
       line-height:1.5;
@@ -61,11 +58,11 @@
       display:flex;align-items:center;justify-content:center;gap:10px;
     }
     .sticky-phone i{background:#d4a52c;color:#0f3b4c;padding:10px;border-radius:50%;}
-    /* Hero секция – фиксирана височина на всички устройства */
+    /* Hero секция – фиксирана височина */
     .hero{
       position:relative;
-      height:80vh;              /* фиксирана височина спрямо viewport */
-      min-height:600px;          /* минимум за много малки екрани */
+      height:80vh;              /* абсолютно фиксирана височина */
+      min-height:600px;          /* резервна */
       max-height:none;
       display:flex;
       align-items:center;
@@ -131,12 +128,11 @@
       overflow:hidden;clip:rect(0,0,0,0);border:0;
     }
 
-    /* ----- НЕКРИТИЧНИ СТИЛОВЕ (секции, карти, галерия, footer) ----- */
+    /* ----- НЕКРИТИЧНИ СТИЛОВЕ ----- */
     .section-padding{padding:80px 0;}
     .bg-soft{background:#f4f9fd;}
     h2{font-size:2.5rem;margin-bottom:1rem;color:#0f3b4c;}
     h3{font-size:1.5rem;margin-bottom:0.5rem;color:#0f3b4c;}
-    /* Услуги и стъпки */
     .services-grid{
       display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
       gap:30px;margin:40px 0;
@@ -151,7 +147,6 @@
       display:flex;align-items:center;justify-content:center;
       font-size:2.2rem;color:#0f3b4c;margin-bottom:1.5rem;
     }
-    /* Галерия – с aspect-ratio за предотвратяване на CLS */
     .gallery-grid{
       display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin:40px 0;
     }
@@ -160,7 +155,6 @@
       aspect-ratio:4/3;
     }
     .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
-    /* Локации */
     .locations-grid{
       display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
       gap:15px;margin:30px 0;
@@ -171,7 +165,6 @@
     }
     .map-container{border-radius:30px;overflow:hidden;box-shadow:0 20px 30px -10px #1d4b5e;margin:40px 0 20px;}
     .map-btn{text-align:center;margin:20px 0;}
-    /* FAQ */
     .faq-grid{
       display:grid;grid-template-columns:repeat(2,1fr);gap:25px;margin-top:30px;
     }
@@ -181,7 +174,6 @@
     }
     .faq-item h3{font-size:1.2rem;margin-bottom:10px;color:#0f3b4c;}
     .faq-item p{color:#3a5f72;}
-    /* Footer */
     .footer{
       background:#0f2f3a;color:#b5d3e3;padding:60px 0 30px;
       border-top:4px solid #d4a52c;
@@ -199,7 +191,7 @@
     .social-links a:hover{color:white;}
     .copyright{text-align:center;padding-top:20px;border-top:1px solid #2e5a6e;}
 
-    /* Адаптивност – hero остава с фиксирана височина, без auto */
+    /* Адаптивност */
     @media (max-width:700px){
       .sticky-phone{display:block;}
       body{padding-bottom:80px;}
@@ -208,7 +200,7 @@
       .nav-links{flex-wrap:wrap;justify-content:center;}
       .gallery-grid{grid-template-columns:1fr;}
       .faq-grid{grid-template-columns:1fr;}
-      .hero{height:70vh; min-height:500px;} /* запазваме фиксирана височина */
+      .hero{height:70vh; min-height:500px;}
       .hero h1{font-size:2.5rem;}
       .hero-geo{font-size:1.2rem;}
       .btn-phone{font-size:1.6rem;padding:1rem 2rem;}
@@ -255,15 +247,11 @@
   }
   </script>
 
-  <!-- Google Fonts – асинхронно зареждане (без блокиране) -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"></noscript>
-
-  <!-- FontAwesome – асинхронно зареждане -->
+  <!-- FontAwesome – асинхронно -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
 
-  <!-- Добавяме font-display: swap за FontAwesome шрифтовете (за да няма невидим текст) -->
+  <!-- Inline font-face за FontAwesome с swap -->
   <style>
     @font-face {
       font-family: 'Font Awesome 6 Brands';
@@ -282,21 +270,17 @@
   </style>
 </head>
 <body>
-  <!-- GDPR банер -->
   <div class="gdpr-banner" id="gdprBanner">
     <span>Този сайт използва бисквитки за по-добра работа. Продължавайки, вие се съгласявате.</span>
     <button onclick="document.getElementById('gdprBanner').style.display='none'">Приемам</button>
   </div>
 
-  <!-- Sticky телефон -->
   <div class="sticky-phone">
     <a href="tel:0888120173"><i class="fas fa-phone-alt"></i> 📞 БЕЗПЛАТЕН ОГЛЕД – ОБАДИ СЕ 0888 12 01 73</a>
   </div>
 
-  <!-- Бутон за връщане горе -->
   <div id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'});"><i class="fas fa-arrow-up"></i></div>
 
-  <!-- Навигация -->
   <nav class="navbar">
     <div class="container">
       <div class="logo"><i class="fas fa-tint"></i> КЛАДЕНЦИ ПРО</div>
@@ -312,7 +296,7 @@
   </nav>
 
   <main>
-    <!-- Hero секция (LCP елемент) – фиксирана височина -->
+    <!-- Hero с фиксирана височина -->
     <section class="hero">
       <div class="container hero-content">
         <h1>Почистване и удълбочаване на кладенци</h1>
@@ -331,26 +315,10 @@
       <div class="container">
         <h2>Услуги, които предлагаме</h2>
         <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-water"></i></div>
-            <h3>Почистване на кладенец</h3>
-            <p>От тиня, пясък и паднали предмети. Възстановяваме водния дебит на вашия кладенец в Перник.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-arrow-down"></i></div>
-            <h3>Удълбочаване на кладенец</h3>
-            <p>Достигане до нови водоносни пластове. Увеличаваме водоизточника при удълбочаване.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
-            <h3>Копаене на нови кладенци</h3>
-            <p>Изграждане на кладенци от нулата според вашите нужди в цялата област.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-search"></i></div>
-            <h3>Безплатен оглед и диагностика</h3>
-            <p>Идваме на място, оглеждаме и даваме точна оценка без ангажимент.</p>
-          </div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-water"></i></div><h3>Почистване на кладенец</h3><p>От тиня, пясък и паднали предмети. Възстановяваме водния дебит на вашия кладенец в Перник.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-arrow-down"></i></div><h3>Удълбочаване на кладенец</h3><p>Достигане до нови водоносни пластове. Увеличаваме водоизточника при удълбочаване.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-hard-hat"></i></div><h3>Копаене на нови кладенци</h3><p>Изграждане на кладенци от нулата според вашите нужди в цялата област.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-search"></i></div><h3>Безплатен оглед и диагностика</h3><p>Идваме на място, оглеждаме и даваме точна оценка без ангажимент.</p></div>
         </div>
         <p style="text-align:center; margin-top:20px;">👉 <a href="#contact" style="color:#0f3b4c; font-weight:600;">Свържете се с нас</a> за безплатен оглед.</p>
       </div>
@@ -361,41 +329,25 @@
       <div class="container">
         <h2>Как работим</h2>
         <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-phone-alt"></i></div>
-            <h3>1. Обаждане</h3>
-            <p>Свързвате се с нас на 0888 12 01 73 – уговаряме безплатен оглед.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-eye"></i></div>
-            <h3>2. Безплатен оглед</h3>
-            <p>Идваме на място в Перник или областта и оглеждаме кладенеца.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-tools"></i></div>
-            <h3>3. Почистване / удълбочаване</h3>
-            <p>Извършваме работата с професионална техника и опит.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><i class="fas fa-droplet"></i></div>
-            <h3>4. Възстановен дебит</h3>
-            <p>Кладенецът отново има чиста вода и повишен водоизток.</p>
-          </div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-phone-alt"></i></div><h3>1. Обаждане</h3><p>Свързвате се с нас на 0888 12 01 73 – уговаряме безплатен оглед.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-eye"></i></div><h3>2. Безплатен оглед</h3><p>Идваме на място в Перник или областта и оглеждаме кладенеца.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-tools"></i></div><h3>3. Почистване / удълбочаване</h3><p>Извършваме работата с професионална техника и опит.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-droplet"></i></div><h3>4. Възстановен дебит</h3><p>Кладенецът отново има чиста вода и повишен водоизток.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Галерия снимки (с width, height и aspect-ratio за CLS) -->
+    <!-- Галерия -->
     <section class="section-padding" id="work">
       <div class="container">
         <h2>Реални обекти в областта</h2>
         <p style="margin-bottom:2rem;">Ето как изглежда работата ни по почистване и удълбочаване на кладенци.</p>
         <div class="gallery-grid">
-          <div class="gallery-item"><img src="pochistvane.na.kladenec.pernik.webp" alt="Почистване на кладенец в Перник – отстраняване на тиня" width="400" height="300" loading="lazy"></div>
+          <div class="gallery-item"><img src="pochistvane.na.kladenec.pernik.webp" alt="Почистване на кладенец в Перник" width="400" height="300" loading="lazy"></div>
           <div class="gallery-item"><img src="udylbochavane.na.kladenec.webp" alt="Удълбочаване на кладенец в област Перник" width="400" height="300" loading="lazy"></div>
-          <div class="gallery-item"><img src="maistor.po.vreme.na.pochistvane.na.kladenec.webp" alt="Майстор по време на почистване на кладенец" width="400" height="300" loading="lazy"></div>
-          <div class="gallery-item"><img src="zatlachen.kladenec.webp" alt="Затлачен кладенец преди почистване Перник" width="400" height="300" loading="lazy"></div>
-          <div class="gallery-item"><img src="chist.kladenec.webp" alt="Същият кладенец след почистване – чиста вода" width="400" height="300" loading="lazy"></div>
+          <div class="gallery-item"><img src="maistor.po.vreme.na.pochistvane.na.kladenec.webp" alt="Майстор по време на почистване" width="400" height="300" loading="lazy"></div>
+          <div class="gallery-item"><img src="zatlachen.kladenec.webp" alt="Затлачен кладенец преди почистване" width="400" height="300" loading="lazy"></div>
+          <div class="gallery-item"><img src="chist.kladenec.webp" alt="Същият кладенец след почистване" width="400" height="300" loading="lazy"></div>
         </div>
       </div>
     </section>
@@ -410,7 +362,7 @@
           <div class="location-item">Ярджиловци</div><div class="location-item">Кладница</div>
         </div>
         <div class="map-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93902.78435268002!2d22.99067782820665!3d42.61500276838921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aae8b2b7b3b1b1%3A0x6b3b5c5f5c5f5c5f!2z0J_QtdGA0L3QuNC6!5e0!3m2!1sbg!2sbg!4v1712156789012!5m2!1sbg!2sbg" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" title="Карта на област Перник с локациите, които обслужваме"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93902.78435268002!2d22.99067782820665!3d42.61500276838921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aae8b2b7b3b1b1%3A0x6b3b5c5f5c5f5c5f!2z0J_QtdGA0L3QuNC6!5e0!3m2!1sbg!2sbg!4v1712156789012!5m2!1sbg!2sbg" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" title="Карта на област Перник"></iframe>
         </div>
         <div class="map-btn">
           <a href="https://maps.app.goo.gl/..." target="_blank" class="btn-outline" rel="noopener"><i class="fas fa-map-marked-alt"></i> Отвори в Google Maps</a>
@@ -433,35 +385,34 @@
       </div>
     </section>
 
-    <!-- Контактна секция -->
+    <!-- Контакт -->
     <section class="section-padding bg-soft" id="contact" style="text-align:center;">
       <div class="container">
         <h2>Свържете се с нас</h2>
         <p style="font-size:1.5rem; margin-bottom:2rem;">Изпълняваме поръчки в цяла област Перник</p>
         <a href="tel:0888120173" class="btn-phone" style="font-size:2.5rem; padding:1.5rem 5rem;"><i class="fas fa-phone-alt"></i> 0888 12 01 73</a>
-        <p style="margin-top:2rem;">📞 Обадете се сега – безплатен оглед и съвет за вашия кладенец</p>
+        <p style="margin-top:2rem;">📞 Обадете се сега – безплатен оглед и съвет</p>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-main">
         <div>
           <div class="logo" style="color:white;"><i class="fas fa-tint"></i> КЛАДЕНЦИ ПРО</div>
           <div class="footer-text">
-            <p>Предлагаме професионално <a href="#services" style="color:#d4a52c; text-decoration:underline;">почистване</a>, <a href="#services" style="color:#d4a52c; text-decoration:underline;">удълбочаване</a> и <a href="#services" style="color:#d4a52c; text-decoration:underline;">копаене</a> на кладенци в Перник, Радомир, Брезник, Трън, Земен, Ковачевци и цялата област. Безплатен оглед и диагностика. Възстановяваме водния дебит на вашия кладенец с гаранция.</p>
+            <p>Професионално <a href="#services" style="color:#d4a52c;">почистване</a>, <a href="#services" style="color:#d4a52c;">удълбочаване</a> и <a href="#services" style="color:#d4a52c;">копаене</a> на кладенци в Перник, Радомир, Брезник, Трън, Земен, Ковачевци. Безплатен оглед.</p>
           </div>
           <div class="social-links">
-            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook страница на Кладенци Про"><i class="fab fa-facebook"></i><span class="sr-only">Facebook</span></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram профил на Кладенци Про"><i class="fab fa-instagram"></i><span class="sr-only">Instagram</span></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i><span class="sr-only">FB</span></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i><span class="sr-only">IG</span></a>
           </div>
         </div>
         <div class="footer-phone"><a href="tel:0888120173"><i class="fas fa-phone-alt"></i> 0888 12 01 73</a></div>
         <div style="background:#1e556b; padding:8px 20px; border-radius:40px;"><i class="fas fa-map-marker-alt"></i> област Перник</div>
       </div>
-      <div class="copyright">© 2025 Кладенци Про. Всички права запазени. Работим без почивен ден.</div>
+      <div class="copyright">© 2025 Кладенци Про. Всички права запазени.</div>
     </div>
   </footer>
 
