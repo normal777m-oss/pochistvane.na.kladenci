@@ -3,51 +3,200 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Meta description за Google -->
+  <!-- Meta description -->
   <meta name="description" content="Почистване и удълбочаване на кладенци в Перник и областта. Безплатен оглед. Копаене на нови кладенци и възстановяване на водния дебит. Тел: 0888 12 01 73">
   <!-- Каноничен URL (заменете с реалния) -->
   <link rel="canonical" href="https://example.com/">
-  <!-- Preload за hero изображението (LCP) -->
-  <link rel="preload" href="kladenets.webp" as="image">
+  <!-- Preload за hero изображението (LCP) с висок приоритет -->
+  <link rel="preload" href="kladenets.webp" as="image" fetchpriority="high">
   <title>Почистване и удълбочаване на кладенци в Перник | Безплатен оглед</title>
   <!-- Preconnect за външни ресурси -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-  <!-- Критични inline стилове (за navbar, hero, бутони, основни настройки) -->
+  <!-- Всички стилове са inline за максимална производителност и без 404 -->
   <style>
+    /* ----- КРИТИЧНИ И НЕКРИТИЧНИ СТИЛОВЕ (ВСИЧКО В ЕДИН ФАЙЛ) ----- */
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Inter',sans-serif;background:#f5f9fc;color:#1e2e3a;line-height:1.5;}
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f5f9fc;
+      color:#1e2e3a;
+      line-height:1.5;
+    }
     .container{max-width:1280px;margin:0 auto;padding:0 30px;}
-    .navbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.9);backdrop-filter:blur(8px);box-shadow:0 2px 15px rgba(0,0,0,0.05);padding:15px 0;}
+    /* Навигация */
+    .navbar{
+      position:sticky;top:0;z-index:100;
+      background:rgba(255,255,255,0.9);backdrop-filter:blur(8px);
+      box-shadow:0 2px 15px rgba(0,0,0,0.05);padding:15px 0;
+    }
     .navbar .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;}
     .logo{font-weight:700;font-size:1.5rem;color:#0f3b4c;}
     .logo i{color:#d4a52c;margin-right:5px;}
     .nav-links{display:flex;gap:25px;align-items:center;}
     .nav-links a{text-decoration:none;color:#1e2e3a;font-weight:500;transition:color 0.2s;}
     .nav-links a:hover{color:#d4a52c;}
-    .nav-phone{background:#d4a52c;color:#0f3b4c !important;padding:8px 20px;border-radius:40px;font-weight:700;display:flex;align-items:center;gap:8px;}
-    .sticky-phone{display:none;position:fixed;bottom:0;left:0;right:0;background:#0f3b4c;padding:15px;text-align:center;z-index:1000;border-top:3px solid #d4a52c;}
-    .sticky-phone a{color:white;text-decoration:none;font-size:1.4rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;}
+    .nav-phone{
+      background:#d4a52c;color:#0f3b4c !important;
+      padding:8px 20px;border-radius:40px;font-weight:700;
+      display:flex;align-items:center;gap:8px;
+    }
+    /* Sticky телефон */
+    .sticky-phone{
+      display:none;position:fixed;bottom:0;left:0;right:0;
+      background:#0f3b4c;padding:15px;text-align:center;z-index:1000;
+      border-top:3px solid #d4a52c;
+    }
+    .sticky-phone a{
+      color:white;text-decoration:none;font-size:1.4rem;font-weight:700;
+      display:flex;align-items:center;justify-content:center;gap:10px;
+    }
     .sticky-phone i{background:#d4a52c;color:#0f3b4c;padding:10px;border-radius:50%;}
-    .hero{position:relative;min-height:80vh;display:flex;align-items:center;background-image:url('kladenets.webp');background-size:cover;background-position:center 40%;background-repeat:no-repeat;}
-    .hero::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(125deg,rgba(10,40,50,0.95),rgba(20,60,75,0.85));}
-    .hero-content{position:relative;z-index:5;max-width:800px;color:white;padding:80px 0;}
-    .hero h1{font-size:clamp(2.8rem,8vw,4.8rem);font-weight:700;line-height:1.2;margin-bottom:1rem;}
-    .hero-geo{font-size:1.6rem;margin:1.5rem 0;display:flex;align-items:center;gap:10px;background:rgba(0,0,0,0.3);backdrop-filter:blur(5px);padding:0.8rem 2rem;border-radius:60px;width:fit-content;border:1px solid #d4a52c;}
+    /* Hero секция */
+    .hero{
+      position:relative;min-height:80vh;display:flex;align-items:center;
+      background-image:url('kladenets.webp');
+      background-size:cover;background-position:center 40%;background-repeat:no-repeat;
+    }
+    .hero::before{
+      content:"";position:absolute;top:0;left:0;width:100%;height:100%;
+      background:linear-gradient(125deg,rgba(10,40,50,0.95),rgba(20,60,75,0.85));
+    }
+    .hero-content{
+      position:relative;z-index:5;max-width:800px;color:white;padding:80px 0;
+    }
+    .hero h1{
+      font-size:clamp(2.8rem,8vw,4.8rem);font-weight:700;line-height:1.2;margin-bottom:1rem;
+    }
+    .hero-geo{
+      font-size:1.6rem;margin:1.5rem 0;display:flex;align-items:center;gap:10px;
+      background:rgba(0,0,0,0.3);backdrop-filter:blur(5px);
+      padding:0.8rem 2rem;border-radius:60px;width:fit-content;border:1px solid #d4a52c;
+    }
     .hero-phone{margin:2rem 0;}
-    .btn-phone{background:#d4a52c;color:#0f3b4c;font-size:2.2rem;padding:1.3rem 4rem;border-radius:60px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:15px;box-shadow:0 15px 25px -5px rgba(0,0,0,0.4);transition:transform 0.2s;}
+    .btn-phone{
+      background:#d4a52c;color:#0f3b4c;font-size:2.2rem;padding:1.3rem 4rem;
+      border-radius:60px;text-decoration:none;font-weight:700;
+      display:inline-flex;align-items:center;gap:15px;
+      box-shadow:0 15px 25px -5px rgba(0,0,0,0.4);transition:transform 0.2s;
+    }
     .btn-phone:hover{transform:translateY(-3px);}
-    .btn-outline{background:transparent;border:2px solid #d4a52c;color:#0f3b4c;padding:0.8rem 2rem;border-radius:40px;text-decoration:none;font-weight:600;transition:0.2s;}
+    .btn-outline{
+      background:transparent;border:2px solid #d4a52c;color:#0f3b4c;
+      padding:0.8rem 2rem;border-radius:40px;text-decoration:none;font-weight:600;transition:0.2s;
+    }
     .btn-outline:hover{background:#d4a52c;color:#0f3b4c;}
-    #backToTop{position:fixed;bottom:90px;right:20px;background:#d4a52c;color:#0f3b4c;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:0 5px 15px rgba(0,0,0,0.2);cursor:pointer;transition:all 0.3s;opacity:0;visibility:hidden;z-index:999;border:2px solid white;}
+    /* Бутон за връщане горе */
+    #backToTop{
+      position:fixed;bottom:90px;right:20px;background:#d4a52c;color:#0f3b4c;
+      width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-size:1.8rem;box-shadow:0 5px 15px rgba(0,0,0,0.2);cursor:pointer;
+      transition:all 0.3s;opacity:0;visibility:hidden;z-index:999;border:2px solid white;
+    }
     #backToTop.show{opacity:1;visibility:visible;}
     #backToTop:hover{background:#c09426;transform:scale(1.1);}
-    .gdpr-banner{position:fixed;bottom:0;left:0;right:0;background:#0f3b4c;color:white;padding:10px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px;z-index:1001;font-size:0.9rem;border-top:2px solid #d4a52c;}
-    .gdpr-banner button{background:#d4a52c;color:#0f3b4c;border:none;padding:8px 20px;border-radius:40px;font-weight:700;cursor:pointer;}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
-    @media (max-width:700px){.sticky-phone{display:block;}body{padding-bottom:80px;}#backToTop{bottom:100px;}.navbar .container{flex-direction:column;gap:10px;}.nav-links{flex-wrap:wrap;justify-content:center;}.hero h1{font-size:2.5rem;}.hero-geo{font-size:1.2rem;}.btn-phone{font-size:1.6rem;padding:1rem 2rem;}.gdpr-banner{flex-direction:column;text-align:center;}}
+    /* GDPR банер */
+    .gdpr-banner{
+      position:fixed;bottom:0;left:0;right:0;background:#0f3b4c;color:white;
+      padding:10px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+      gap:20px;z-index:1001;font-size:0.9rem;border-top:2px solid #d4a52c;
+    }
+    .gdpr-banner button{
+      background:#d4a52c;color:#0f3b4c;border:none;padding:8px 20px;
+      border-radius:40px;font-weight:700;cursor:pointer;
+    }
+    .sr-only{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);border:0;
+    }
+
+    /* ----- НЕКРИТИЧНИ СТИЛОВЕ (секции, карти, галерия, footer) ----- */
+    .section-padding{padding:80px 0;}
+    .bg-soft{background:#f4f9fd;}
+    h2{font-size:2.5rem;margin-bottom:1rem;color:#0f3b4c;}
+    h3{font-size:1.5rem;margin-bottom:0.5rem;color:#0f3b4c;}
+    /* Услуги и стъпки */
+    .services-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:30px;margin:40px 0;
+    }
+    .service-card{
+      background:white;border-radius:28px;padding:2.5rem 2rem;
+      box-shadow:0 15px 25px -10px #b7d4e5;transition:transform 0.2s;
+    }
+    .service-card:hover{transform:translateY(-5px);}
+    .service-icon{
+      background:#e7f2f9;width:70px;height:70px;border-radius:20px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:2.2rem;color:#0f3b4c;margin-bottom:1.5rem;
+    }
+    /* Галерия */
+    .gallery-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin:40px 0;
+    }
+    .gallery-item{
+      border-radius:20px;overflow:hidden;box-shadow:0 15px 25px -10px #1d4b5e;
+    }
+    .gallery-item img{width:100%;height:auto;display:block;}
+    /* Локации */
+    .locations-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:15px;margin:30px 0;
+    }
+    .location-item{
+      background:white;padding:12px 20px;border-radius:40px;text-align:center;
+      font-weight:600;box-shadow:0 5px 10px rgba(0,0,0,0.05);border:1px solid #d4a52c;
+    }
+    .map-container{border-radius:30px;overflow:hidden;box-shadow:0 20px 30px -10px #1d4b5e;margin:40px 0 20px;}
+    .map-btn{text-align:center;margin:20px 0;}
+    /* FAQ */
+    .faq-grid{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:25px;margin-top:30px;
+    }
+    .faq-item{
+      background:white;border-radius:25px;padding:25px;
+      box-shadow:0 10px 20px -5px #bbd3e3;
+    }
+    .faq-item h3{font-size:1.2rem;margin-bottom:10px;color:#0f3b4c;}
+    .faq-item p{color:#3a5f72;}
+    /* Footer */
+    .footer{
+      background:#0f2f3a;color:#b5d3e3;padding:60px 0 30px;
+      border-top:4px solid #d4a52c;
+    }
+    .footer-main{
+      display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:30px;
+    }
+    .footer-phone a{
+      color:#d4a52c;font-size:2rem;font-weight:700;text-decoration:none;
+      display:flex;align-items:center;gap:10px;
+    }
+    .footer-text{max-width:600px;margin:20px 0;line-height:1.6;}
+    .social-links{display:flex;gap:15px;margin-top:15px;}
+    .social-links a{color:#d4a52c;font-size:1.8rem;transition:color 0.2s;}
+    .social-links a:hover{color:white;}
+    .copyright{text-align:center;padding-top:20px;border-top:1px solid #2e5a6e;}
+
+    /* Адаптивност */
+    @media (max-width:700px){
+      .sticky-phone{display:block;}
+      body{padding-bottom:80px;}
+      #backToTop{bottom:100px;}
+      .navbar .container{flex-direction:column;gap:10px;}
+      .nav-links{flex-wrap:wrap;justify-content:center;}
+      .gallery-grid{grid-template-columns:1fr;}
+      .faq-grid{grid-template-columns:1fr;}
+      .hero h1{font-size:2.5rem;}
+      .hero-geo{font-size:1.2rem;}
+      .btn-phone{font-size:1.6rem;padding:1rem 2rem;}
+      .footer-main{flex-direction:column;gap:20px;text-align:center;}
+      .gdpr-banner{flex-direction:column;text-align:center;}
+    }
+    @media (max-width:450px){
+      .services-grid{grid-template-columns:1fr;}
+    }
   </style>
 
   <!-- Local Business Schema -->
@@ -64,14 +213,7 @@
       "addressRegion": "Перник",
       "addressCountry": "BG"
     },
-    "areaServed": [
-      "Перник",
-      "Радомир",
-      "Брезник",
-      "Трън",
-      "Земен",
-      "Ковачевци"
-    ],
+    "areaServed": ["Перник","Радомир","Брезник","Трън","Земен","Ковачевци"],
     "priceRange": "$$",
     "url": "https://example.com"
   }
@@ -82,66 +224,19 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Колко струва почистване на кладенец?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Цената зависи от дълбочината и степента на затлачване. Обадете се за безплатен оглед и точна оферта."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Колко време отнема удълбочаването?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Обикновено 1-2 дни, в зависимост от терена и дълбочината."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Работите ли през почивните дни?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Да, работим без почивен ден при предварително записване."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Колко се увеличава дебитът след почистване?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Често дебитът се възстановява до 80-100% от първоначалния, а при удълбочаване може да се удвои."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Какви методи използвате?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Работим със специализирана техника – помпи, сонди и ръчен труд от опитни майстори."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Безплатният оглед ли е?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Да, идваме на място, оглеждаме и даваме оценка без никакви задължения."
-        }
-      }
+      {"@type":"Question","name":"Колко струва почистване на кладенец?","acceptedAnswer":{"@type":"Answer","text":"Цената зависи от дълбочината и степента на затлачване. Обадете се за безплатен оглед и точна оферта."}},
+      {"@type":"Question","name":"Колко време отнема удълбочаването?","acceptedAnswer":{"@type":"Answer","text":"Обикновено 1-2 дни, в зависимост от терена и дълбочината."}},
+      {"@type":"Question","name":"Работите ли през почивните дни?","acceptedAnswer":{"@type":"Answer","text":"Да, работим без почивен ден при предварително записване."}},
+      {"@type":"Question","name":"Колко се увеличава дебитът след почистване?","acceptedAnswer":{"@type":"Answer","text":"Често дебитът се възстановява до 80-100% от първоначалния, а при удълбочаване може да се удвои."}},
+      {"@type":"Question","name":"Какви методи използвате?","acceptedAnswer":{"@type":"Answer","text":"Работим със специализирана техника – помпи, сонди и ръчен труд от опитни майстори."}},
+      {"@type":"Question","name":"Безплатният оглед ли е?","acceptedAnswer":{"@type":"Answer","text":"Да, идваме на място, оглеждаме и даваме оценка без никакви задължения."}}
     ]
   }
   </script>
 
-  <!-- Асинхронно зареждане на некритичния CSS (за галерия, услуги, локации, FAQ, footer) -->
-  <link rel="preload" href="non-critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="non-critical.css"></noscript>
-
-  <!-- Google Fonts (критични за шрифта, но с display=swap) -->
+  <!-- Google Fonts (с display=swap) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-
-  <!-- FontAwesome – зареждаме асинхронно, тъй като иконите не са критични за първия екран -->
+  <!-- FontAwesome – асинхронно зареждане -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
 </head>
@@ -175,9 +270,8 @@
     </div>
   </nav>
 
-  <!-- Главно съдържание -->
   <main>
-    <!-- Hero секция -->
+    <!-- Hero секция (LCP елемент) -->
     <section class="hero">
       <div class="container hero-content">
         <h1>Почистване и удълбочаване на кладенци</h1>
@@ -191,7 +285,7 @@
       </div>
     </section>
 
-    <!-- Услуги + вътрешна връзка -->
+    <!-- Услуги -->
     <section class="section-padding" id="services">
       <div class="container">
         <h2>Услуги, които предлагаме</h2>
@@ -217,7 +311,6 @@
             <p>Идваме на място, оглеждаме и даваме точна оценка без ангажимент.</p>
           </div>
         </div>
-        <!-- Вътрешна връзка -->
         <p style="text-align:center; margin-top:20px;">👉 <a href="#contact" style="color:#0f3b4c; font-weight:600;">Свържете се с нас</a> за безплатен оглед.</p>
       </div>
     </section>
@@ -251,34 +344,29 @@
       </div>
     </section>
 
-    <!-- Галерия -->
+    <!-- Галерия снимки (с width и height за CLS) -->
     <section class="section-padding" id="work">
       <div class="container">
         <h2>Реални обекти в областта</h2>
         <p style="margin-bottom:2rem;">Ето как изглежда работата ни по почистване и удълбочаване на кладенци.</p>
         <div class="gallery-grid">
-          <div class="gallery-item"><img src="pochistvane.na.kladenec.pernik.webp" alt="Почистване на кладенец в Перник – отстраняване на тиня" loading="lazy"></div>
-          <div class="gallery-item"><img src="udylbochavane.na.kladenec.webp" alt="Удълбочаване на кладенец в област Перник" loading="lazy"></div>
-          <div class="gallery-item"><img src="maistor.po.vreme.na.pochistvane.na.kladenec.webp" alt="Майстор по време на почистване на кладенец" loading="lazy"></div>
-          <div class="gallery-item"><img src="zatlachen.kladenec.webp" alt="Затлачен кладенец преди почистване Перник" loading="lazy"></div>
-          <div class="gallery-item"><img src="chist.kladenec.webp" alt="Същият кладенец след почистване – чиста вода" loading="lazy"></div>
+          <div class="gallery-item"><img src="pochistvane.na.kladenec.pernik.webp" alt="Почистване на кладенец в Перник – отстраняване на тиня" width="400" height="300" loading="lazy"></div>
+          <div class="gallery-item"><img src="udylbochavane.na.kladenec.webp" alt="Удълбочаване на кладенец в област Перник" width="400" height="300" loading="lazy"></div>
+          <div class="gallery-item"><img src="maistor.po.vreme.na.pochistvane.na.kladenec.webp" alt="Майстор по време на почистване на кладенец" width="400" height="300" loading="lazy"></div>
+          <div class="gallery-item"><img src="zatlachen.kladenec.webp" alt="Затлачен кладенец преди почистване Перник" width="400" height="300" loading="lazy"></div>
+          <div class="gallery-item"><img src="chist.kladenec.webp" alt="Същият кладенец след почистване – чиста вода" width="400" height="300" loading="lazy"></div>
         </div>
       </div>
     </section>
 
-    <!-- Локации и карта + бутон -->
+    <!-- Локации и карта -->
     <section class="section-padding bg-soft" id="locations">
       <div class="container">
         <h2>Работим в цяла област Перник</h2>
         <div class="locations-grid">
-          <div class="location-item">Перник</div>
-          <div class="location-item">Радомир</div>
-          <div class="location-item">Брезник</div>
-          <div class="location-item">Трън</div>
-          <div class="location-item">Земен</div>
-          <div class="location-item">Ковачевци</div>
-          <div class="location-item">Ярджиловци</div>
-          <div class="location-item">Кладница</div>
+          <div class="location-item">Перник</div><div class="location-item">Радомир</div><div class="location-item">Брезник</div>
+          <div class="location-item">Трън</div><div class="location-item">Земен</div><div class="location-item">Ковачевци</div>
+          <div class="location-item">Ярджиловци</div><div class="location-item">Кладница</div>
         </div>
         <div class="map-container">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93902.78435268002!2d22.99067782820665!3d42.61500276838921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aae8b2b7b3b1b1%3A0x6b3b5c5f5c5f5c5f!2z0J_QtdGA0L3QuNC6!5e0!3m2!1sbg!2sbg!4v1712156789012!5m2!1sbg!2sbg" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" title="Карта на област Перник с локациите, които обслужваме"></iframe>
@@ -294,30 +382,12 @@
       <div class="container">
         <h2>Често задавани въпроси</h2>
         <div class="faq-grid">
-          <div class="faq-item">
-            <h3>Колко струва почистване на кладенец?</h3>
-            <p>Цената зависи от дълбочината и степента на затлачване. Обадете се за безплатен оглед и точна оферта.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Колко време отнема удълбочаването?</h3>
-            <p>Обикновено 1-2 дни, в зависимост от терена и дълбочината.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Работите ли през почивните дни?</h3>
-            <p>Да, работим без почивен ден при предварително записване.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Колко се увеличава дебитът след почистване?</h3>
-            <p>Често дебитът се възстановява до 80-100% от първоначалния, а при удълбочаване може да се удвои.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Какви методи използвате?</h3>
-            <p>Работим със специализирана техника – помпи, сонди и ръчен труд от опитни майстори.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Безплатният оглед ли е?</h3>
-            <p>Да, идваме на място, оглеждаме и даваме оценка без никакви задължения.</p>
-          </div>
+          <div class="faq-item"><h3>Колко струва почистване на кладенец?</h3><p>Цената зависи от дълбочината и степента на затлачване. Обадете се за безплатен оглед и точна оферта.</p></div>
+          <div class="faq-item"><h3>Колко време отнема удълбочаването?</h3><p>Обикновено 1-2 дни, в зависимост от терена и дълбочината.</p></div>
+          <div class="faq-item"><h3>Работите ли през почивните дни?</h3><p>Да, работим без почивен ден при предварително записване.</p></div>
+          <div class="faq-item"><h3>Колко се увеличава дебитът след почистване?</h3><p>Често дебитът се възстановява до 80-100% от първоначалния, а при удълбочаване може да се удвои.</p></div>
+          <div class="faq-item"><h3>Какви методи използвате?</h3><p>Работим със специализирана техника – помпи, сонди и ръчен труд от опитни майстори.</p></div>
+          <div class="faq-item"><h3>Безплатният оглед ли е?</h3><p>Да, идваме на място, оглеждаме и даваме оценка без никакви задължения.</p></div>
         </div>
       </div>
     </section>
@@ -342,34 +412,23 @@
           <div class="footer-text">
             <p>Предлагаме професионално <a href="#services" style="color:#d4a52c; text-decoration:underline;">почистване</a>, <a href="#services" style="color:#d4a52c; text-decoration:underline;">удълбочаване</a> и <a href="#services" style="color:#d4a52c; text-decoration:underline;">копаене</a> на кладенци в Перник, Радомир, Брезник, Трън, Земен, Ковачевци и цялата област. Безплатен оглед и диагностика. Възстановяваме водния дебит на вашия кладенец с гаранция.</p>
           </div>
-          <!-- Социални връзки с достъпни имена -->
           <div class="social-links">
             <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook страница на Кладенци Про"><i class="fab fa-facebook"></i><span class="sr-only">Facebook</span></a>
             <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram профил на Кладенци Про"><i class="fab fa-instagram"></i><span class="sr-only">Instagram</span></a>
           </div>
         </div>
-        <div class="footer-phone">
-          <a href="tel:0888120173"><i class="fas fa-phone-alt"></i> 0888 12 01 73</a>
-        </div>
-        <div style="background:#1e556b; padding:8px 20px; border-radius:40px;">
-          <i class="fas fa-map-marker-alt"></i> област Перник
-        </div>
+        <div class="footer-phone"><a href="tel:0888120173"><i class="fas fa-phone-alt"></i> 0888 12 01 73</a></div>
+        <div style="background:#1e556b; padding:8px 20px; border-radius:40px;"><i class="fas fa-map-marker-alt"></i> област Перник</div>
       </div>
-      <div class="copyright">
-        © 2025 Кладенци Про. Всички права запазени. Работим без почивен ден.
-      </div>
+      <div class="copyright">© 2025 Кладенци Про. Всички права запазени. Работим без почивен ден.</div>
     </div>
   </footer>
 
   <script>
-    // Показване/скриване на бутона за връщане горе
     window.addEventListener('scroll', function() {
       var btn = document.getElementById('backToTop');
-      if (window.scrollY > 400) {
-        btn.classList.add('show');
-      } else {
-        btn.classList.remove('show');
-      }
+      if (window.scrollY > 400) btn.classList.add('show');
+      else btn.classList.remove('show');
     });
   </script>
 </body>
