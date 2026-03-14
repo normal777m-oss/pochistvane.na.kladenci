@@ -7,15 +7,16 @@
   <meta name="description" content="Почистване и удълбочаване на кладенци в Перник и областта. Безплатен оглед. Копаене на нови кладенци и възстановяване на водния дебит. Тел: 0888 12 01 73">
   <!-- Каноничен URL (заменете с реалния) -->
   <link rel="canonical" href="https://example.com/">
-  <!-- Preload за hero изображението (LCP) с висок приоритет -->
-  <link rel="preload" href="kladenets.webp" as="image" fetchpriority="high">
+  <!-- Preload за hero изображението (LCP) с висок приоритет и различни размери -->
+  <link rel="preload" href="kladenets-mobile.webp" as="image" fetchpriority="high" media="(max-width: 600px)">
+  <link rel="preload" href="kladenets.webp" as="image" fetchpriority="high" media="(min-width: 601px)">
   <title>Почистване и удълбочаване на кладенци в Перник | Безплатен оглед</title>
   <!-- Preconnect за външни ресурси -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-  <!-- Всички стилове са inline за максимална производителност и без 404 -->
+  <!-- Всички стилове са inline за максимална производителност -->
   <style>
     /* ----- КРИТИЧНИ И НЕКРИТИЧНИ СТИЛОВЕ (ВСИЧКО В ЕДИН ФАЙЛ) ----- */
     *{margin:0;padding:0;box-sizing:border-box;}
@@ -54,11 +55,17 @@
       display:flex;align-items:center;justify-content:center;gap:10px;
     }
     .sticky-phone i{background:#d4a52c;color:#0f3b4c;padding:10px;border-radius:50%;}
-    /* Hero секция */
+    /* Hero секция – с адаптивно изображение */
     .hero{
       position:relative;min-height:80vh;display:flex;align-items:center;
-      background-image:url('kladenets.webp');
       background-size:cover;background-position:center 40%;background-repeat:no-repeat;
+    }
+    /* Зареждаме различни изображения според ширината на екрана */
+    @media (max-width:600px){
+      .hero{background-image:url('kladenets-mobile.webp');}
+    }
+    @media (min-width:601px){
+      .hero{background-image:url('kladenets.webp');}
     }
     .hero::before{
       content:"";position:absolute;top:0;left:0;width:100%;height:100%;
@@ -132,14 +139,15 @@
       display:flex;align-items:center;justify-content:center;
       font-size:2.2rem;color:#0f3b4c;margin-bottom:1.5rem;
     }
-    /* Галерия */
+    /* Галерия – с aspect-ratio за предотвратяване на CLS */
     .gallery-grid{
       display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin:40px 0;
     }
     .gallery-item{
       border-radius:20px;overflow:hidden;box-shadow:0 15px 25px -10px #1d4b5e;
+      aspect-ratio:4/3; /* гарантира запазено място */
     }
-    .gallery-item img{width:100%;height:auto;display:block;}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
     /* Локации */
     .locations-grid{
       display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -234,8 +242,10 @@
   }
   </script>
 
-  <!-- Google Fonts (с display=swap) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Google Fonts – асинхронно зареждане (без блокиране) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"></noscript>
+
   <!-- FontAwesome – асинхронно зареждане -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
@@ -271,7 +281,7 @@
   </nav>
 
   <main>
-    <!-- Hero секция (LCP елемент) -->
+    <!-- Hero секция (LCP елемент) с адаптивно изображение -->
     <section class="hero">
       <div class="container hero-content">
         <h1>Почистване и удълбочаване на кладенци</h1>
@@ -344,7 +354,7 @@
       </div>
     </section>
 
-    <!-- Галерия снимки (с width и height за CLS) -->
+    <!-- Галерия снимки (с width, height и aspect-ratio за CLS) -->
     <section class="section-padding" id="work">
       <div class="container">
         <h2>Реални обекти в областта</h2>
