@@ -7,9 +7,8 @@
   <meta name="description" content="Почистване и удълбочаване на кладенци в Перник и областта. Безплатен оглед. Копаене на нови кладенци и възстановяване на водния дебит. Тел: 0888 12 01 73">
   <!-- Каноничен URL (заменете с реалния) -->
   <link rel="canonical" href="https://example.com/">
-  <!-- Preload за hero изображението (LCP) с висок приоритет и различни размери -->
-  <link rel="preload" href="kladenets-mobile.webp" as="image" fetchpriority="high" media="(max-width: 600px)">
-  <link rel="preload" href="kladenets.webp" as="image" fetchpriority="high" media="(min-width: 601px)">
+  <!-- Preload за hero изображението (LCP) с висок приоритет – само един файл, за да избегнем 404 -->
+  <link rel="preload" href="kladenets.webp" as="image" fetchpriority="high">
   <title>Почистване и удълбочаване на кладенци в Перник | Безплатен оглед</title>
   <!-- Preconnect за външни ресурси -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,17 +54,11 @@
       display:flex;align-items:center;justify-content:center;gap:10px;
     }
     .sticky-phone i{background:#d4a52c;color:#0f3b4c;padding:10px;border-radius:50%;}
-    /* Hero секция – с адаптивно изображение */
+    /* Hero секция – само с kladenets.webp (без мобилна версия) */
     .hero{
       position:relative;min-height:80vh;display:flex;align-items:center;
+      background-image:url('kladenets.webp');
       background-size:cover;background-position:center 40%;background-repeat:no-repeat;
-    }
-    /* Зареждаме различни изображения според ширината на екрана */
-    @media (max-width:600px){
-      .hero{background-image:url('kladenets-mobile.webp');}
-    }
-    @media (min-width:601px){
-      .hero{background-image:url('kladenets.webp');}
     }
     .hero::before{
       content:"";position:absolute;top:0;left:0;width:100%;height:100%;
@@ -281,7 +274,7 @@
   </nav>
 
   <main>
-    <!-- Hero секция (LCP елемент) с адаптивно изображение -->
+    <!-- Hero секция (LCP елемент) с един файл -->
     <section class="hero">
       <div class="container hero-content">
         <h1>Почистване и удълбочаване на кладенци</h1>
