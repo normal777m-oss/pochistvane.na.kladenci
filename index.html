@@ -314,9 +314,10 @@
   </style>
 </head>
 <body>
+  <!-- GDPR банер – вече без onclick, ще се управлява от JavaScript -->
   <div class="gdpr-banner" id="gdprBanner">
     <span>Този сайт използва бисквитки за по-добра работа. Продължавайки, вие се съгласявате.</span>
-    <button onclick="document.getElementById('gdprBanner').style.display='none'">Приемам</button>
+    <button id="acceptCookies">Приемам</button>
   </div>
 
   <div class="sticky-phone">
@@ -340,7 +341,7 @@
   </nav>
 
   <main>
-    <!-- Hero с подобрен мобилен изглед – сега текстът е центриран -->
+    <!-- Hero с подобрен мобилен изглед – текстът вече е центриран -->
     <section class="hero">
       <div class="container hero-content">
         <h1>Почистване и удълбочаване на кладенци</h1>
@@ -461,11 +462,29 @@
   </footer>
 
   <script>
+    // Показване/скриване на бутона за връщане горе
     window.addEventListener('scroll', function() {
       var btn = document.getElementById('backToTop');
       if (window.scrollY > 400) btn.classList.add('show');
       else btn.classList.remove('show');
     });
+
+    // GDPR банер – запомняне на съгласието
+    (function() {
+      var gdprBanner = document.getElementById('gdprBanner');
+      var acceptBtn = document.getElementById('acceptCookies');
+
+      // Ако вече е приел, скриваме банера
+      if (localStorage.getItem('cookiesAccepted') === 'true') {
+        gdprBanner.style.display = 'none';
+      }
+
+      // При клик на бутона – скриваме и записваме
+      acceptBtn.addEventListener('click', function() {
+        gdprBanner.style.display = 'none';
+        localStorage.setItem('cookiesAccepted', 'true');
+      });
+    })();
   </script>
 </body>
 </html>
