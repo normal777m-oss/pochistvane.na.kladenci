@@ -201,14 +201,15 @@
       .gallery-grid{grid-template-columns:1fr;}
       .faq-grid{grid-template-columns:1fr;}
 
-      /* Промени в hero секцията за мобилни устройства */
+      /* Промени в hero секцията за мобилни устройства – окончателно решение */
       .hero{
         height: auto;                /* височината да се определя от съдържанието */
         min-height: 90svh;           /* минимум 90% от малката височина на viewport */
-        padding: 40px 0;             /* добавяме вертикален padding */
+        align-items: flex-start;     /* подравнява съдържанието отгоре, а не в центъра */
+        padding: 0;                  /* премахваме padding-а от hero */
       }
       .hero-content{
-        padding: 20px 0;             /* намаляваме padding-а на съдържанието */
+        padding: 60px 0 40px 0;      /* добавяме отстояние отгоре и отдолу */
       }
       .hero h1{
         font-size: 2.2rem;           /* леко намаляме размера на заглавието */
